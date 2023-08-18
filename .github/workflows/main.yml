@@ -1,35 +1,41 @@
-name: Manual workflow
+name: Release
 
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: "Log level"
+      app:
+        description: 'Application'
         required: true
-        default: "warning"
+        default: 'staging-tests-scripts'
         type: choice
         options:
-          - info
-          - warning
-          - debug
-      tags:
-        description: "Test scenario tags"
-        required: false
-        type: boolean
-      environment:
-        description: "Environment to run tests against"
-        type: environment
+          - staging-tests-scripts
+      increment:
+        description: 'Increment'
         required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      environment:
+        description: 'Environment'
+        required: true
+        default: 'LIVE'
+        type: choice
+        options:
+          - LIVE
 
 jobs:
-  log-the-inputs:
+  release:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Log level: $LEVEL"
-          echo "Tags: $TAGS"
+          echo "App: $APP"
+          echo "Increment: $INCREMENT"
           echo "Environment: $ENVIRONMENT"
         env:
-          LEVEL: ${{ inputs.logLevel }}
-          TAGS: ${{ inputs.tags }}
+          APP: ${{ inputs.app }}
+          INCREMENT: ${{ inputs.increment }}
           ENVIRONMENT: ${{ inputs.environment }}
