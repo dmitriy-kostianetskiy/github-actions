@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "release-it --only-version --github.releaseName='Staging Tests Scripts ${version}' --ci -i=patch"
+    "release": "release-it --only-version --github.releaseName='Staging Tests Scripts ${version}' --ci -i=major"
   },
   "author": "",
   "license": "ISC",
