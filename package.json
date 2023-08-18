@@ -1,0 +1,19 @@
+{
+  "name": "github-actions",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "npm": {
+    "publish": false
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "release-it --only-version --github.releaseName='Staging Tests Scripts ${version}' --ci"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "release-it": "^16.1.5"
+  }
+}
