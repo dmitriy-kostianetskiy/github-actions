@@ -22,10 +22,11 @@ on:
       environment:
         description: 'Environment'
         required: true
-        default: 'LIVE'
+        default: 'STAGING'
         type: choice
         options:
           - LIVE
+          - STAGING
 
 jobs:
   release:
@@ -39,4 +40,4 @@ jobs:
           APP: ${{ inputs.app }}
           INCREMENT: ${{ inputs.increment }}
           ENVIRONMENT: ${{ inputs.environment }}
-        if: 1 == 0
+        if: ${{ inputs.environment }} == "LIVE"
